@@ -19,6 +19,8 @@ public class TestVO {
 		this.testTitle = testTitle;
 		this.testContent = testContent;
 	}
+	
+	
 //개터세터
 	public int getTestNo() {
 		return testNo;
