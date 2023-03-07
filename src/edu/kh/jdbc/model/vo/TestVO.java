@@ -9,7 +9,7 @@ public class TestVO {
 	public TestVO() {
 
 	
-		
+		 
 
 	}
 	//매개변수 생성자(모든 필드 초기화)
@@ -19,8 +19,6 @@ public class TestVO {
 		this.testTitle = testTitle;
 		this.testContent = testContent;
 	}
-	
-	
 //개터세터
 	public int getTestNo() {
 		return testNo;

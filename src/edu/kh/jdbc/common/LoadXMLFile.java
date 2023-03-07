@@ -8,21 +8,26 @@ import java.util.Properties;
 public class LoadXMLFile {
 
 	public static void main(String[] args) {
-		//xml파일 읽어오기 (Properties, fileInputStrim)
+		// XML 파일 읽어오기 (Properties, FileInputStream)
 		
 		try {
-			Properties prop = new Properties(); //map (String : STring)
-			//driver.xml 파일을 읽어오기 위한 InputStrem 객체 생성 
+			
+			Properties prop = new Properties();// Map<String,String>
+			
+			//driver.xml  파일을 읽어오기 위한 InputStream 객체 생성
 			FileInputStream fis = new FileInputStream("driver.xml");
-					
-					//연결된 driver.xml파일에 있는 내용을 모두 읽어와
-					//Properties 객체 K:V 형식으로 저장 
+			
+			//연결된 driver.xml 파일에 있는 내용을 모두 읽어와
+			//Properties 객체에 K:V 형식으로 저장 
+			
 			prop.loadFromXML(fis);
-			//인풋스트림 전달 
+			//인풋스트림 전달
+			
 			System.out.println(prop);
 			
-			//Property : 	속성 (데이터 )
-			//prop.getProperty("key") :key가 일치하는 속성 (데이터)을 얻어옴 
+			//Property : 속성(데이터)
+			
+			//prop.getProperty("key") : key가 일치하는 속성(데이터)을 얻어옴
 			
 			String driver = prop.getProperty("driver");
 			String url = prop.getProperty("url");
@@ -31,46 +36,38 @@ public class LoadXMLFile {
 			
 			System.out.println();
 			
-			//driver.xml파일에서 읽어온 값들을 이용해 Connection 생성
+			// driver.xml파일에서 일거온 값들을 이용해 Connection 생성 
 			Class.forName(driver);// "oracle.jdbc.driver.OracleDriver"
-			Connection conn = DriverManager.getConnection(url,user,password);
+			Connection conn = DriverManager.getConnection(url, user,password);
 			
 			System.out.println(conn);
-			
-			
-			
-			
-			
-			/*
-			 * 왜 xml 파일을 이용햇 db연결정보를 읽어와야 할까?
-			 * 1. 코드 중복 제거
-			 * 2. 별도 관리 용도	-별도 파일을 이용해서 수정이 용이
-		
-			 * 3.재  컴파일  진행하지 않기 휘해서 
-			 * 	- 코드가 길수록 컴파일에 소요되는 시간이 크다. 
-			 * --> 코드 수정으로 인한 컴파일 소요시간 없앰.
-			 * (파일이 내용을 읽어오는 코드만 작성해두면 
-			 * java코드 수정 없이, 파일 내용만 수정 
-			 * 제컴파일 수행되지 않는다 )
+			/*왜 XML 파일을 이용해서 DB 연결 정보를 읽어와야 할까?
+			 * 1. 코드 중복 제거를 위해
+			 * 2. 별도 관리 용도
+			 * 		- 별도 파일을 이용해서 수정이 용이
+			 * 3. 제 컴파일 진행하지 않기 위해서
 			 * 
-			 * 4. xml 파일 작성된 문자열 형태를 그대로 읽어오기 때문에
-			 * SQL 작성시 좀 더 편리해진다 
+			 * - 코드가 길수록 컴파일에 ㅅ요되는 시간이 크다.
+			 * 		--> 코드 수정으로 인한 컴파일 소요시간 없앰.
+			 * 	(파일의 내용을 일거오는 코드만 작성해두면 
+			 * java 코드 수정없이 , 파일 내용만 수정하면 
+			 * 제 컴파일 수행되지 않는다. )
 			 * 
-			 * 
-		
-			 * 
-			 * 
-			 * 
+			 * 4. XML 파일 작성된 문자열 형태를 그대로 읽어오기 때문에
+			 *  SQL 작성시 
 			 * 
 			 * 
 			 * 
 			 * 
 			 * 
 			 * */
+			
+			
 		}catch(Exception e) {
 			e.printStackTrace();
-			
 		}
+		
+		
 	}
 
 }
